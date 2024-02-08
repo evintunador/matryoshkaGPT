@@ -14,6 +14,14 @@ Next, I've got two ideas that I think I can implement
 2. see if i can make this relate to hierarchical knowledge graph embeddings
     
     2a. in `imposed_hierarchical_embeddings_GPT.ipynb` I'm trying to force a pre-determined hierarchial structure onto the embeddings. The idea here is that hopefully I can force a model to think in terms of human-defined hierarchical conceptual categories. If those are good categories and I'm very lucky, then the model may even be able to train faster.
-       - so far I've defined the categories we'll be using and built a masked loss function capable of taking these categories into account. i still need to nest that loss function within a hierarchical structure so that it works with the matryoshka embeddings, but i think this will be quick/easy. after that just train and analyze the cosine similarity of the embeddings to see if it worked
+       - so far I've got it all up & running with a model trained and some example images. It does in fact seem like i can force structure on the embeddings at least to some degree. most of the work to be done now has to do with hyperparameter tuning and trying it on a slightly larger model. Here's an image example, where "degree" means the length of the embedding subset
+
+<p align="center">
+<img src="./images/imposed_hierarchical_embeddings_GPT_b4_t16_d32_h4_l4_lr0.0003_drop0.2_l2-0.01_min_power1_2024-02-07|23-21-13_symbolsvsletters.png" width="512"/>
+</p>
+
+<p align="center">
+<img src="./images/imposed_hierarchical_embeddings_GPT_b4_t16_d32_h4_l4_lr0.0003_drop0.2_l2-0.01_min_power1_2024-02-07|23-22-20_endofsentencevsmidsentence&uppercasevslowercase.png" width="512"/>
+</p>
     
     2b. in `emergent_hierarchical_embeddings_GPT.ipynb` (not yet created) I'd like to get the model to dynamically present to us hierarchies of tokens that it learns through training. for example, if we're doing character-wise tokenization, then i want the smaller embedding dimension lengths to naturally correspond to categories like "captial vs lowercase letters" or "vowels vs consonants" which is already something that i can clearly see in a cosine similarity display of `matryoshka_embeddings_gpt.ipynb`. The difficulty here will be in picking good a good clustering algorithm, good hyperparameters for that clustering algorithm, and then implementing these categories at the right speed during training. luckily this project is already mostly coded up from pieces in `matryoshka_embeddings_gpt.ipynb` and `imposed_hierarchical_embeddings_GPT.ipynb`; after some frankensteining the only code i'll have to change is the training loop.

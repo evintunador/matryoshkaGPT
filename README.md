@@ -25,4 +25,12 @@ Next, I've got two ideas that I think I can implement
 </p>
 
 
-2b. in `emergent_hierarchical_embeddings_GPT.ipynb` (not yet created) I'd like to get the model to dynamically present to us hierarchies of tokens that it learns through training. for example, if we're doing character-wise tokenization, then i want the smaller embedding dimension lengths to naturally correspond to categories like "captial vs lowercase letters" or "vowels vs consonants" which is already something that i can clearly see in a cosine similarity display of `matryoshka_embeddings_gpt.ipynb`. The difficulty here will be in picking good a good clustering algorithm, good hyperparameters for that clustering algorithm, and then implementing these categories at the right speed during training. luckily this project is already mostly coded up from pieces in `matryoshka_embeddings_gpt.ipynb` and `imposed_hierarchical_embeddings_GPT.ipynb`; after some frankensteining the only code i'll have to change is the training loop.
+2b. in `emergent_hierarchical_embeddings_GPT.ipynb` I've gotten the model to dynamically present to us hierarchies of tokens that it learns through training. for example, if we're doing character-wise tokenization, then i want the smaller embedding dimension lengths to naturally correspond to categories like "captial vs lowercase letters" or "vowels vs consonants" which is already something that i can clearly see in a cosine similarity display of `matryoshka_embeddings_gpt.ipynb`. The difficulty here will be in picking good a good clustering algorithm, good hyperparameters for that clustering algorithm, and then implementing these categories at the right speed during training. As of now my clustering methodology is just setting a minimum cosine similarity level and group size, but i'd like to progress this to something more sophisticated. Here are some examples of the very promising results so far
+
+<p align="center">
+<img src="./images/emergent_hierarchical_embeddings_GPT_b8_t24_d32_h4_l4_lr0.0003_drop0.2_l2-0.01_min_power2_2024-02-08|20-22-47_V2_thispower2.png" width="512"/>
+</p>
+
+<p align="center">
+<img src="./images/emergent_hierarchical_embeddings_GPT_b8_t24_d32_h4_l4_lr0.0003_drop0.2_l2-0.01_min_power2_2024-02-08|20-22-49_V2_thispower3.png" width="512"/>
+</p>

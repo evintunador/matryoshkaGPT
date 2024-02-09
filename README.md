@@ -1,6 +1,7 @@
 # Matryoshka GPT
-the idea is based on matryoshka embeddings from [this paper](https://arxiv.org/abs/2205.13147) which are a hierarchical representation scheme designed for representation learning that allowed one representation model to train embedding vectors of varying sizes simultaneously that also fit inside each other, like russian nesting dolls
+the idea is based on matryoshka embeddings from [this paper](https://arxiv.org/abs/2205.13147) which are a hierarchical representation scheme designed for representation learning that allowed one representation model to train embedding vectors of varying sizes simultaneously that also fit inside each other, like russian nesting dolls. see my youtube explanation below:
 
+[![click me for video](https://img.youtube.com/vi/dUeM_yDuGbg/0.jpg)](https://www.youtube.com/watch?v=dUeM_yDuGbg)
 
 in `matryoshka_embeddings_gpt.ipynb` i've implemented matryoshka embeddings into a GPT model, meaning that for the final output residual `x` of shape `(b,t,d)` and transposed embedding matrix output of shape `(d,v)` you have the option to slice off the `d` dimension at various sizes that are all powers of 2, and the model will still work. this isn't really that useful for just a GPT because it doesn't actually save any significant compute. It does however give you embeddings that are self-similar at different spliced sizes, which would be useful if all you cared about was representation learning from a language mode.
 
